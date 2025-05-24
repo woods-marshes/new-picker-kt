@@ -49,6 +49,7 @@ The `Ui` module is built upon the `Base` module. This modules come with a ready-
 2. No drag-to-select items
 3. Multi-language translation needs a lot of work.
 4. Some Configurable Arguments (using DSL) are not wired up properly.
+5. Null Pointer Problems at DrawerContent(ui).
 
 ### `sample`
 The sample is basically a demo of the library. You can build and install to test it on your phone.
@@ -72,7 +73,33 @@ dependencies {
 ```
 
 ### With Jetpack Compose
-0. Request `android.Manifest.permission.READ_EXTERNAL_STORAGE` permission from the user. If you got no idea, see the `sample` source code or `Google` it.
+0. Request `android.Manifest.permission.READ_EXTERNAL_STORAGE` permission from the user. And you need to create a new Application class like the one below. If you got no idea, see the `sample` source code or `Google` it.
+   ```kotlin
+   @HiltAndroidApp
+   class MainApplication : Application(), SingletonImageLoader.Factory {
+   
+       override fun newImageLoader(context: PlatformContext): ImageLoader {
+           return ImageLoader.Builder(context)
+               .components {
+                   add(SvgDecoder.Factory())
+                   if (SDK_INT >= 28) {
+                       add(AnimatedImageDecoder.Factory())
+                   } else {
+                       add(GifDecoder.Factory())
+                   }
+                   add(VideoFrameDecoder.Factory())
+               }
+               .build()
+       }
+   }
+    ```
+   ```xml
+   <!-- AndroidManifest.xml -->
+    <application
+        android:name=".MainApplication"
+    
+      />
+   ```
 1. In one of your Compose UI, declare a `MutableStateList` of any other State holder that can hold a `List<Uri>`
     ```kotlin
     val myPickerResultList = remember { mutableStateListOf<Uri>() }
