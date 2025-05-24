@@ -68,7 +68,7 @@ repositories {
 }
 
 dependencies {
-   implementation 'com.github.rektplorer64:picker-kt:<VERSION>'
+   implementation 'com.github.woods-marshes:new-picker-kt:0.2.0'
 }
 ```
 
