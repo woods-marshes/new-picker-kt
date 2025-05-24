@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="base_app_name">Picker-kt</string>
+    <string name="base_collection_wildcard">All Folders</string>
+    <string name="base_collection_download">Download</string>
+    <string name="base_common_unknown">Unknown</string>
+</resources>
