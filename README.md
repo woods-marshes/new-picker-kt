@@ -15,6 +15,8 @@
 </div>
 
 ![Project Hero Image](./repo_metadata/hero_image.png)
+# Note
+Android 16 and Compose 1.8.1 are now supported.
 
 ## 🚩 Motivations
 The app I worked on in my full-time job used [Matisse](https://github.com/zhihu/Matisse), and it was okay until a new version of Android (11 ~ 12) came along. The app faced instability issues and, to be honest, the UI of Matisse is not consistent with the rest of the app that uses Jetpack Compose by that time. Therefore, I spent my free time building this library to (hopefully) replace Matisse.
@@ -33,7 +35,8 @@ The `Base` module contains core data classes specified by the library and data l
 
 #### Caveats
 1. Non-media file MIME Type won't work with `ContentResolver` even if we have them defined in the code (PDF, MS Word, etc. are not visible 🥲).
-2. I decided to use `threetenabp` and not quite sure if I got it right (in terms of setup and appropiateness).
+2. ~~I decided to use `threetenabp` and not quite sure if I got it right (in terms of setup and appropiateness).~~
+   Now use `kotlinx.datetime.Instant`.
 
 ### `pickerkt-ui`
 The `Ui` module is built upon the `Base` module. This modules come with a ready-to-use Media Picker UI implemented using Jetpack Compose with Material 3. The screenshots in the top banner comes from this module. This is where most of efforts went into.
@@ -141,6 +144,7 @@ dependencies {
 That's all you have to do for Jetpack Compose. To use the result list, use `myPickerResultList` as declared in step 1.
 
 ## ✅ Requirements
+- use hilt library
 - AndroidX
 - Min SDK: 24
 
