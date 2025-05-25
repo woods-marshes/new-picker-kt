@@ -17,6 +17,7 @@
 ![Project Hero Image](./repo_metadata/hero_image.png)
 # Note
 Android 16 and Compose 1.8.1 are now supported.
+Image preview is not supported because of many problems.
 
 ## 🚩 Motivations
 The app I worked on in my full-time job used [Matisse](https://github.com/zhihu/Matisse), and it was okay until a new version of Android (11 ~ 12) came along. The app faced instability issues and, to be honest, the UI of Matisse is not consistent with the rest of the app that uses Jetpack Compose by that time. Therefore, I spent my free time building this library to (hopefully) replace Matisse.
